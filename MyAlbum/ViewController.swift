@@ -8,29 +8,32 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var currentValue = 0
 
+    @IBOutlet weak var priceLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    @IBAction func showAlert(_ sender: Any) {
-        let alert = UIAlertController(title:"Hello",
-          message: "My First APP!!", preferredStyle:
-          .alert)
-        let action = UIAlertAction(title: "OK", style:
-            .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        refresh()
     }
     
     @IBAction func newShowAlert(_ sender: Any) {
-        let alert = UIAlertController(title:"New Task",
-            message: "My First Task!!", preferredStyle:
+        let message = "가격은 $\(currentValue)입니다."
+        
+        let alert = UIAlertController(title:"Hello",
+            message: message, preferredStyle:
             .alert)
-        let action = UIAlertAction(title: "Good", style:
-            .default, handler: nil)
+        let action = UIAlertAction(title: "OK", style:
+                                    .default, handler: { action in self.refresh() })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func refresh() {
+        let randomPrice = arc4random_uniform(10000) + 1
+        currentValue = Int(randomPrice)
+        priceLabel.text = "$ \(currentValue)"
     }
 }
-
