@@ -23,5 +23,14 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func newShowAlert(_ sender: Any) {
+        let alert = UIAlertController(title:"New Task",
+            message: "My First Task!!", preferredStyle:
+            .alert)
+        let action = UIAlertAction(title: "Good", style:
+            .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
